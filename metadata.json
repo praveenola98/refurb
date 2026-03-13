@@ -1,0 +1,7 @@
+{
+  "name": "RefurbLaptop Store",
+  "description": "A premium full-stack eCommerce platform for high-quality refurbished laptops with admin controls, secure payments, and order tracking.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "customer"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "blocked": { "type": "boolean" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Refurbished laptop details",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "brand": { "type": "string" },
+        "processor": { "type": "string" },
+        "ram": { "type": "string" },
+        "ssd": { "type": "string" },
+        "price": { "type": "number" },
+        "discountPrice": { "type": "number" },
+        "condition": { "type": "string", "enum": ["A", "B", "C"] },
+        "stock": { "type": "number" },
+        "images": { "type": "array", "items": { "type": "string" } },
+        "description": { "type": "string" },
+        "specifications": { "type": "object" },
+        "warranty": { "type": "string" },
+        "featured": { "type": "boolean" },
+        "category": { "type": "string" }
+      },
+      "required": ["name", "brand", "price", "stock", "condition"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer order details",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "items": { "type": "array" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "packed", "shipped", "delivered", "cancelled"] },
+        "paymentMethod": { "type": "string", "enum": ["razorpay", "cod"] },
+        "paymentStatus": { "type": "string", "enum": ["pending", "completed", "failed"] },
+        "razorpayOrderId": { "type": "string" },
+        "shippingAddress": { "type": "object" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "items", "totalAmount", "status", "paymentMethod"]
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "Discount coupons",
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "discountPercentage": { "type": "number" },
+        "expiryDate": { "type": "string", "format": "date-time" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["code", "discountPercentage", "expiryDate"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Product reviews",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["productId", "userId", "rating"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Product catalog"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Customer orders"
+    },
+    "/coupons/{couponId}": {
+      "schema": "Coupon",
+      "description": "Discount coupons"
+    },
+    "/products/{productId}/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Product reviews"
+    }
+  }
+}
