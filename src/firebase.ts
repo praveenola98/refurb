@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, enableNetwork } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
 
@@ -19,6 +19,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 export const db = getFirestore(app);   // ✅ correct
 export const auth = getAuth(app);
+enableNetwork(db);
 
 export enum OperationType {
   CREATE = 'create',
