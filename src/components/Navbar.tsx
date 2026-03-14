@@ -33,17 +33,14 @@ const Navbar: React.FC = () => {
 
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="flex items-center space-x-2 px-3 py-1 rounded-xl">
-              <Laptop className="h-8 w-8 text-indigo-600 group-hover:scale-110 transition" />
-              <span className="text-lg font-bold text-gray-900 tracking-tight">
-                Refurbished
-              </span>
-
-            </div>
+            <Laptop className="h-8 w-8 text-indigo-600 group-hover:scale-110 transition" />
+            <span className="text-xl font-bold text-gray-900 tracking-tight">
+              RefurbLaptop
+            </span>
           </Link>
 
           {/* Search Bar */}
-          <form onSubmit={handleSearch} className=" md:flex flex-1 max-w-lg mx-8">
+          <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-lg mx-8">
             <div className="relative w-full">
               <input
                 type="text"
@@ -140,7 +137,16 @@ const Navbar: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 px-4 py-5 space-y-4 shadow-sm">
 
-
+          <form onSubmit={handleSearch} className="relative">
+            <input
+              type="text"
+              placeholder="Search laptops..."
+              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg bg-gray-50"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+          </form>
 
           <Link
             to="/products"
