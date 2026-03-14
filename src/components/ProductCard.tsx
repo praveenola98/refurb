@@ -58,11 +58,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className="text-xl font-bold text-indigo-600">
               ₹{(product.discountPrice || product.price).toLocaleString()}
             </div>
-            {product.discountPrice && (
-              <div className="text-sm text-gray-400 line-through">
-                ₹{product.price.toLocaleString()}
-              </div>
-            )}
+            
           </div>
           <button
             onClick={handleAddToCart}
