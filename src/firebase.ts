@@ -1,10 +1,23 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import firebaseConfig from '../firebase-applet-config.json';
+import { getAnalytics } from "firebase/analytics";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAVeSApXuujK2CyTj-MudUNg142wgcnzWA",
+  authDomain: "king-f63a8.firebaseapp.com",
+  databaseURL: "https://king-f63a8-default-rtdb.firebaseio.com",
+  projectId: "king-f63a8",
+  storageBucket: "king-f63a8.firebasestorage.app",
+  messagingSenderId: "967838154667",
+  appId: "1:967838154667:web:ba8149e80f397952a89cee",
+  measurementId: "G-1CQ8GD6T1J"
+};
 
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+const analytics = getAnalytics(app);
+export const db = getFirestore(app);   // ✅ correct
 export const auth = getAuth(app);
 
 export enum OperationType {
