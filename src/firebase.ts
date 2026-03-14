@@ -59,7 +59,7 @@ export function handleFirestoreError(error: unknown, operationType: OperationTyp
         displayName: provider.displayName,
         email: provider.email,
         photoUrl: provider.photoURL
-      })) || []
+      })) || []git commit -m "Updated firebase configuration for production"
     },
     operationType,
     path
