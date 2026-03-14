@@ -21,9 +21,6 @@
       ]
     },
     "allowImportingTsExtensions": true,
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "types": ["vite/client"]
+    "noEmit": true
   }
 }
